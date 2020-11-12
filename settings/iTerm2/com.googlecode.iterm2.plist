@@ -3199,7 +3199,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/akkeylab/mac-auto-setup/settings/iTerm2</string>
+	<string>/Users/tomoyukikino/mac-auto-setup/settings/iTerm2</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>

@@ -1,7 +1,7 @@
 #!/bin/bash
 cat << EOS
 
- AkkeyLab
+ tomoyukikino
 
  The elapsed time does not matter.
  Because speed is important.
