@@ -1,7 +1,7 @@
 #!/bin/bash
 cat << EOS
 
- AkkeyLab
+ tomoyukikino
 
  The elapsed time does not matter.
  Because speed is important.
@@ -69,11 +69,11 @@ fi
 #
 # Install vim
 #
-if ! command_exists vim ; then
-  echo " ------------ Vim ------------"
-  brew install vim --with-override-system-vi
-  echo " ------------ END ------------"
-fi
+# if ! command_exists vim ; then
+#   echo " ------------ Vim ------------"
+#   brew install vim --with-override-system-vi
+#   echo " ------------ END ------------"
+# fi
 
 #
 # Powerline
@@ -114,17 +114,17 @@ echo " ------------ END ------------"
 #
 # Install Node.js env
 #
-if ! command_exists nodebrew ; then
-  echo " ---------- Node.js ----------"
-  curl -L git.io/nodebrew | perl - setup
-  nodebrew ls-remote
-  nodebrew install-binary latest
-  nodebrew ls
-  nodebrew use latest
-  node -v
-  npm -v
-  echo " ------------ END ------------"
-fi
+# if ! command_exists nodebrew ; then
+#   echo " ---------- Node.js ----------"
+#   curl -L git.io/nodebrew | perl - setup
+#   nodebrew ls-remote
+#   nodebrew install-binary latest
+#   nodebrew ls
+#   nodebrew use latest
+#   node -v
+#   npm -v
+#   echo " ------------ END ------------"
+# fi
 
 #
 # Install Yarn
@@ -137,22 +137,22 @@ fi
 
 #
 # TeX settings
-#
-if ! command_exists tex ; then
-  echo " ------------ TeX ------------"
-  brew cask install mactex
-  # Tex Live Utility > preference > path -> /Library/TeX/texbin
-  version=$(tex -version | grep -oE '2[0-9]{3}' | head -1)
-  echo $pass | sudo -S /usr/local/texlive/$version/bin/x86_64-darwin/tlmgr path add
-  echo $pass | sudo -S tlmgr update --self --all
-  # JPN Lang settings
-  cd /usr/local/texlive/$version/texmf-dist/scripts/cjk-gs-integrate
-  echo $pass | sudo -S perl cjk-gs-integrate.pl --link-texmf --force
-  echo $pass | sudo -S mktexlsr
-  echo $pass | sudo -S kanji-config-updmap-sys hiragino-elcapitan-pron
-  # Select ==> TeXShop > Preferences > Source > pTeX (ptex2pdf)
-  echo " ------------ END ------------"
-fi
+# #
+# if ! command_exists tex ; then
+#   echo " ------------ TeX ------------"
+#   brew cask install mactex
+#   # Tex Live Utility > preference > path -> /Library/TeX/texbin
+#   version=$(tex -version | grep -oE '2[0-9]{3}' | head -1)
+#   echo $pass | sudo -S /usr/local/texlive/$version/bin/x86_64-darwin/tlmgr path add
+#   echo $pass | sudo -S tlmgr update --self --all
+#   # JPN Lang settings
+#   cd /usr/local/texlive/$version/texmf-dist/scripts/cjk-gs-integrate
+#   echo $pass | sudo -S perl cjk-gs-integrate.pl --link-texmf --force
+#   echo $pass | sudo -S mktexlsr
+#   echo $pass | sudo -S kanji-config-updmap-sys hiragino-elcapitan-pron
+#   # Select ==> TeXShop > Preferences > Source > pTeX (ptex2pdf)
+#   echo " ------------ END ------------"
+# fi
 
 #
 # Install wget
@@ -166,33 +166,33 @@ fi
 
 #
 # CocoaPods
-#
-if ! command_exists pod ; then
-  echo " --------- CocoaPods ---------"
-  echo $pass | sudo -S gem install -n /usr/local/bin cocoapods --pre
-  pod setup
-  echo " ------------ END ------------"
-fi
+# #
+# if ! command_exists pod ; then
+#   echo " --------- CocoaPods ---------"
+#   echo $pass | sudo -S gem install -n /usr/local/bin cocoapods --pre
+#   pod setup
+#   echo " ------------ END ------------"
+# fi
 
 #
 # Carthage
 #
-if ! command_exists carthage ; then
-  echo " --------- Carthage ----------"
-  brew install carthage
-  echo " ------------ END ------------"
-fi
+# if ! command_exists carthage ; then
+#   echo " --------- Carthage ----------"
+#   brew install carthage
+#   echo " ------------ END ------------"
+# fi
 
 #
 # swiftenv
 #
-if ! command_exists swiftenv ; then
-  echo " --------- swiftenv ----------"
-  brew install kylef/formulae/swiftenv
-  echo 'if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi' >> ~/.yadr/zsh/private.zsh
-  swiftenv rehash
-  echo " ------------ END ------------"
-fi
+# if ! command_exists swiftenv ; then
+#   echo " --------- swiftenv ----------"
+#   brew install kylef/formulae/swiftenv
+#   echo 'if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi' >> ~/.yadr/zsh/private.zsh
+#   swiftenv rehash
+#   echo " ------------ END ------------"
+# fi
 
 while true; do
   read -p 'Now install web apps? [Y/n]' Answer
@@ -237,3 +237,17 @@ case $Answer in
     echo "Writing to ~/.yadr/zsh/private.zsh is complete."
     echo " ------------ END ------------"
 esac
+
+#
+# Prezto
+#
+echo " --------- Prezto ---------"
+# Font is 14pt Iconsolata for Powerline with Solarized Dark iterm2 colors.
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+echo ~/.zshrc >> 'source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"'
+chsh -s /bin/zsh
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+echo " ------------ END ------------"

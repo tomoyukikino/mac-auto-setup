@@ -1,7 +1,7 @@
 #!/bin/bash
 cat << EOS
 
- AkkeyLab
+ tomoyukikino
 
  The elapsed time does not matter.
  Because speed is important.
@@ -38,5 +38,5 @@ fi
 # mac-auto-setup.git
 #
 echo " ---- mac-auto-setup.git -----"
-git clone https://github.com/AkkeyLab/mac-auto-setup.git
+git clone https://github.com/tomoyukikino/mac-auto-setup.git
 echo " ------------ END ------------"

@@ -1,13 +1,13 @@
 # mac-auto-setup
-Auto setup system for macOS.
+Auto setup system for my macOS.
 
 ## macOS version
-macOS Catalina 10.15.4
+macOS Catalina
 
 ## Downloads
 To get started please run:
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/AkkeyLab/mac-auto-setup/master/download.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/tomoyukikino/mac-auto-setup/feat/createOrigin/download.sh)"
 ```
 
 ## Installation
