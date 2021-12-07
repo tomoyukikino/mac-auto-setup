@@ -7,7 +7,7 @@ macOS Catalina
 ## Downloads
 To get started please run:
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/tomoyukikino/mac-auto-setup/feat/createOrigin/download.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/tomoyukikino/mac-auto-setup/master/download.sh)"
 ```
 
 ## Installation
