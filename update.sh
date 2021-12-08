@@ -28,8 +28,8 @@ brew upgrade --creanup
 #
 # Homebrew Cask check and upgrade
 #
-brew cask outdated
-brew cask upgrade
+brew install --cask outdated
+brew install --cask  upgrade
 
 #
 # App Store app upgrade
