@@ -40,3 +40,19 @@ fi
 echo " ---- mac-auto-setup.git -----"
 git clone https://github.com/tomoyukikino/mac-auto-setup.git
 echo " ------------ END ------------"
+
+echo " ---- run setup.sh -----"
+./mac-auto-setup/setup.sh
+echo " ------------ END ------------"
+
+echo " ---- run app.sh -----"
+./mac-auto-setup/app.sh
+echo " ------------ END ------------"
+
+echo " ---- run appstore.sh -----"
+./mac-auto-setup/appstore.sh
+echo " ------------ END ------------"
+
+echo " ---- run update.sh -----"
+./mac-auto-setup/update.sh
+echo " ------------ END ------------"
