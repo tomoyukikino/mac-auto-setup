@@ -34,5 +34,7 @@ brew install --cask slack
 brew install --cask utorrent
 brew install --cask figma
 brew install --cask paw
+brew install --cask twitch
+brew install --cask asana
 echo " ------------ END ------------"
 
