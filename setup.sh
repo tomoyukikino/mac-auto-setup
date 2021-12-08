@@ -114,17 +114,17 @@ echo " ------------ END ------------"
 #
 # Install Node.js env
 #
-# if ! command_exists nodebrew ; then
-#   echo " ---------- Node.js ----------"
-#   curl -L git.io/nodebrew | perl - setup
-#   nodebrew ls-remote
-#   nodebrew install-binary latest
-#   nodebrew ls
-#   nodebrew use latest
-#   node -v
-#   npm -v
-#   echo " ------------ END ------------"
-# fi
+if ! command_exists nodebrew ; then
+  echo " ---------- Node.js ----------"
+  curl -L git.io/nodebrew | perl - setup
+  nodebrew ls-remote
+  nodebrew install-binary latest
+  nodebrew ls
+  nodebrew use latest
+  node -v
+  npm -v
+  echo " ------------ END ------------"
+fi
 
 #
 # Install Yarn
@@ -136,25 +136,6 @@ if ! command_exists yarn ; then
 fi
 
 #
-# TeX settings
-# #
-# if ! command_exists tex ; then
-#   echo " ------------ TeX ------------"
-#   brew cask install mactex
-#   # Tex Live Utility > preference > path -> /Library/TeX/texbin
-#   version=$(tex -version | grep -oE '2[0-9]{3}' | head -1)
-#   echo $pass | sudo -S /usr/local/texlive/$version/bin/x86_64-darwin/tlmgr path add
-#   echo $pass | sudo -S tlmgr update --self --all
-#   # JPN Lang settings
-#   cd /usr/local/texlive/$version/texmf-dist/scripts/cjk-gs-integrate
-#   echo $pass | sudo -S perl cjk-gs-integrate.pl --link-texmf --force
-#   echo $pass | sudo -S mktexlsr
-#   echo $pass | sudo -S kanji-config-updmap-sys hiragino-elcapitan-pron
-#   # Select ==> TeXShop > Preferences > Source > pTeX (ptex2pdf)
-#   echo " ------------ END ------------"
-# fi
-
-#
 # Install wget
 #
 if ! command_exists wget ; then
@@ -163,36 +144,6 @@ if ! command_exists wget ; then
   wget --version
   echo " ------------ END ------------"
 fi
-
-#
-# CocoaPods
-# #
-# if ! command_exists pod ; then
-#   echo " --------- CocoaPods ---------"
-#   echo $pass | sudo -S gem install -n /usr/local/bin cocoapods --pre
-#   pod setup
-#   echo " ------------ END ------------"
-# fi
-
-#
-# Carthage
-#
-# if ! command_exists carthage ; then
-#   echo " --------- Carthage ----------"
-#   brew install carthage
-#   echo " ------------ END ------------"
-# fi
-
-#
-# swiftenv
-#
-# if ! command_exists swiftenv ; then
-#   echo " --------- swiftenv ----------"
-#   brew install kylef/formulae/swiftenv
-#   echo 'if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi' >> ~/.yadr/zsh/private.zsh
-#   swiftenv rehash
-#   echo " ------------ END ------------"
-# fi
 
 while true; do
   read -p 'Now install web apps? [Y/n]' Answer
